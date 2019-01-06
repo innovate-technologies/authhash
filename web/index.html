@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="shoutca-st" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SHOUTca.st | Authhash Creator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="dns-prefetch" href="https://shoutca.st">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <link data-noprefix href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link data-noprefix href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    <link data-noprefix href="//cdnjs.cloudflare.com/ajax/libs/flexslider/2.2.0/flexslider.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://shoutca.st/css/main.css">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body data-spy="scroll" data-target="#topbar">
+    <a id="home"></a>
+    <!-- Start of header -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="topbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">SHOUTca.st</a>
+                <!--<a class="navbar-brand" href="/"><span class="be-black">SHO</span><span class="be-yellow">UTc</span><span class="be-red">a.st</span></a>-->
+                <!--<a class="navbar-brand" href="/"> <img src="images/logo.png" width="180" alt="SHOUTca.st"></a>-->
+            </div>
+            <div class="collapse navbar-collapse navbar-collapse">
+            </div>
+        </div>
+    </nav>
+    <!-- End of header -->
+    <!-- Start of body -->
+    <div class="container main-page-container">
+        <div class="container">
+            <div class="col-xs-12">
+                <h1>Authhash Creator</h1>
+            </div>
+            <div class="col-xs-6">
+                <p>SHOUTcast.com stopped allowing the creation of pre-2.6 compatible Authhashes via their website. This
+                    site allows you to create one via the official SHOUTcast.com YP API.</p>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="alert alert-success hidden" id="alertok" role="alert"><strong>Success!</strong> your Authhash
+                is: <span id="authhash">REPLACE
+                    ME</span></div>
+            <div class="alert alert-danger hidden" id="alerterror" role="alert"><strong>Error!</strong> an error
+                occured: <span id="error">ERROR</span</div> </div> <div class="col-xs-12">
+                    <form data-toggle="validator" role="form" id="form" novalidate>
+                        <div class="form-group">
+                            <label for="stationname">Station name</label>
+                            <input type="text" class="form-control" id="stationname" name="stationname" placeholder="Station name"
+                                maxlength="100" required>
+                            <div class="help-block with-errors">Required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Genre</label>
+                            <select class="form-control" id="genre" name="genre">
+                                <option>Alternative</option>
+                                <option>Blues</option>
+                                <option>Classical</option>
+                                <option>Country</option>
+                                <option>Decades</option>
+                                <option>Easy Listening</option>
+                                <option>Electronic</option>
+                                <option>Folk</option>
+                                <option>Inspirational</option>
+                                <option>International</option>
+                                <option>Jazz</option>
+                                <option>Latin</option>
+                                <option>Metal</option>
+                                <option>Misc</option>
+                                <option>New Age</option>
+                                <option>Pop</option>
+                                <option>Public Radio</option>
+                                <option>R&B and Urban</option>
+                                <option>Rap</option>
+                                <option>Reggae</option>
+                                <option>Rock</option>
+                                <option>Seasonal and Holiday</option>
+                                <option>Soundtracks</option>
+                                <option>Talk</option>
+                                <option>Themes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="help@shoutca.st"
+                                required>
+                            <div class="help-block with-errors">Required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="text" class="form-control" id="website" name="website" maxlength="128"
+                                placeholder="https://">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LexPIcUAAAAAIV5toV6w4WgTFyc6R5qfJ87Ghm5" data-size="invisible"
+                            data-callback="onSubmit">
+                        </div>
+                        <button type="submit" id="btnSubmit" class="btn btn-default">Create Authhash</button>
+                    </form>
+            </div>
+        </div>
+        <!-- End of body -->
+        <!-- Start of footer -->
+        <footer class="footer" id="main-footer">
+            <div class="container">
+                <div class="copyright">
+                    <p>Copyright &copy; 2019. SHOUTca.st</p>
+                    <p>SHOUTca.st is a trading name of Unmuted Limited, a registered company in England and Wales
+                        (company
+                        number: 11574378).</p>
+                </div>
+            </div>
+        </footer>
+        <!-- End of footer -->
+        <script>
+            $('#form').validator().on('submit', function (e) {
+                if (!e.isDefaultPrevented()) {
+                    grecaptcha.reset();
+                    grecaptcha.execute();
+                    e.preventDefault();
+                }
+            })
+
+            function onSubmit(token) {
+                $("#btnSubmit").prop("disabled", true);
+                var form = $("#form");
+                $.ajax({
+                    type: "POST",
+                    url: "/api/create",
+                    data: form.serialize(), // serializes the form's elements.
+                    success: function (data) {
+                        $("#alertok").removeClass("hidden");
+                        $("#authhash").text(data);
+                        $("#btnSubmit").prop("disabled", false);
+                    },
+                    error: function (data) {
+                        //console.log(data);
+                        $("#error").text(data.responseText);
+                        $("#alerterror").removeClass("hidden");
+                        $("#btnSubmit").prop("disabled", false);
+                    },
+                });
+                e.preventDefault();
+            }
+        </script>
+</body>
+
+</html>
