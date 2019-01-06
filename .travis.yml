@@ -14,4 +14,4 @@ after_success:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push $DOCKER_REPO:$TRAVIS_COMMIT; fi
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker tag $DOCKER_REPO:$TRAVIS_COMMIT $DOCKER_REPO:$ARCH-latest; docker push $DOCKER_REPO:$ARCH-latest; fi
   - if [ "$TRAVIS_TAG" != "" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker tag $DOCKER_REPO:$TRAVIS_COMMIT $DOCKER_REPO:$ARCH-$TRAVIS_TAG; docker push $DOCKER_REPO:$ARCH-$TRAVIS_TAG; fi
-  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then HELM_VERSION=v2.12.1 B64_CA_CRT=$B64_CA_CRT SERVICE_ACCOUNT_TOKEN=$SERVICE_ACCOUNT_TOKEN CLUSTER_ENDPOINT=$CLUSTER_ENDPOINT HELM_RELEASE=authhash HELM_CHART="./chart" K8S_NAMESPACE=authhash HELM_ARGS="--set image.tag=$TRAVIS_COMMIT" make deploy; fi
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then HELM_VERSION=v2.9.1 B64_CA_CRT=$B64_CA_CRT SERVICE_ACCOUNT_TOKEN=$SERVICE_ACCOUNT_TOKEN CLUSTER_ENDPOINT=$CLUSTER_ENDPOINT HELM_RELEASE=authhash HELM_CHART="./chart" K8S_NAMESPACE=authhash HELM_ARGS="--set image.tag=$TRAVIS_COMMIT" make deploy; fi
