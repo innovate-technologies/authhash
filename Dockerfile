@@ -3,7 +3,7 @@ FROM golang:1.11 as build
 COPY ./ /go/src/github.com/innovate-technologies/authhash
 WORKDIR /go/src/github.com/innovate-technologies/authhash
 
-RUN go build ./
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo ./
 
 FROM alpine
 
