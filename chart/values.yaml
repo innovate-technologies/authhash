@@ -21,7 +21,7 @@ ingress:
   path: /
   hosts:
     - authhash.shoutca.st
-  tls: []
+  tls:
     - secretName: authhash-tls
       hosts:
         - authhash.shoutca.st
