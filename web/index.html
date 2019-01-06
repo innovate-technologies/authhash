@@ -118,50 +118,51 @@
                     </form>
             </div>
         </div>
-        <!-- End of body -->
-        <!-- Start of footer -->
-        <footer class="footer" id="main-footer">
-            <div class="container">
-                <div class="copyright">
-                    <p>Copyright &copy; 2019. SHOUTca.st</p>
-                    <p>SHOUTca.st is a trading name of Unmuted Limited, a registered company in England and Wales
-                        (company
-                        number: 11574378).</p>
-                </div>
+    </div>
+    <!-- End of body -->
+    <!-- Start of footer -->
+    <footer class="footer" id="main-footer">
+        <div class="container">
+            <div class="copyright">
+                <p>Copyright &copy; 2019. SHOUTca.st</p>
+                <p>SHOUTca.st is a trading name of Unmuted Limited, a registered company in England and Wales
+                    (company
+                    number: 11574378).</p>
             </div>
-        </footer>
-        <!-- End of footer -->
-        <script>
-            $('#form').validator().on('submit', function (e) {
-                if (!e.isDefaultPrevented()) {
-                    grecaptcha.reset();
-                    grecaptcha.execute();
-                    e.preventDefault();
-                }
-            })
-
-            function onSubmit(token) {
-                $("#btnSubmit").prop("disabled", true);
-                var form = $("#form");
-                $.ajax({
-                    type: "POST",
-                    url: "/api/create",
-                    data: form.serialize(), // serializes the form's elements.
-                    success: function (data) {
-                        $("#alertok").removeClass("hidden");
-                        $("#authhash").text(data);
-                        $("#btnSubmit").prop("disabled", false);
-                    },
-                    error: function (data) {
-                        //console.log(data);
-                        $("#error").text(data.responseText);
-                        $("#alerterror").removeClass("hidden");
-                        $("#btnSubmit").prop("disabled", false);
-                    },
-                });
+        </div>
+    </footer>
+    <!-- End of footer -->
+    <script>
+        $('#form').validator().on('submit', function (e) {
+            if (!e.isDefaultPrevented()) {
+                grecaptcha.reset();
+                grecaptcha.execute();
                 e.preventDefault();
             }
-        </script>
+        })
+
+        function onSubmit(token) {
+            $("#btnSubmit").prop("disabled", true);
+            var form = $("#form");
+            $.ajax({
+                type: "POST",
+                url: "/api/create",
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $("#alertok").removeClass("hidden");
+                    $("#authhash").text(data);
+                    $("#btnSubmit").prop("disabled", false);
+                },
+                error: function (data) {
+                    //console.log(data);
+                    $("#error").text(data.responseText);
+                    $("#alerterror").removeClass("hidden");
+                    $("#btnSubmit").prop("disabled", false);
+                },
+            });
+            e.preventDefault();
+        }
+    </script>
 </body>
 
 </html>
