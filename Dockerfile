@@ -12,6 +12,8 @@ RUN apk add --no-cache ca-certificates
 COPY --from=build /go/src/github.com/innovate-technologies/authhash/authhash /opt/authhash/authhash
 COPY --from=build /go/src/github.com/innovate-technologies/authhash/web /opt/authhash/web
 
+RUN chmod +x /opt/authhash/authhash
+
 WORKDIR /opt/authhash/
 
-CMD ["/opt/authhash"]
+CMD ["/opt/authhash/authhash"]
